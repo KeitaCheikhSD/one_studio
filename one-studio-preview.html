@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONE STUDIO — Pilates Reformer & Nutrition, Colombes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===================== TOKENS ===================== */
+:root{
+  --brun:#4A3527;       /* Noyer profond — était brun chocolat */
+  --beige:#E4DCCA;      /* Sable chaud — était beige sable */
+  --noir:#2C2620;       /* Anthracite chaud — était noir profond */
+  --ivoire:#F8F4EC;     /* Blanc chaud — était ivoire */
+  --terracotta:#B08D57; /* Laiton — accent principal */
+  --camel:#8B6D4F;      /* Noyer clair — accent secondaire */
+  --sauge:#838C6E;      /* Sauge */
+  --lin:#EDE4D2;        /* Lin clair — neutre tonal, fond tarifs / texte clair sur fond sombre */
+  --argile:#C49A80;     /* Argile rosé — touche décorative */
+
+  --serif: "Fraunces", serif;
+  --sans: "Work Sans", sans-serif;
+
+  --container: 1240px;
+  --pad: clamp(24px, 6vw, 96px);
+  --radius-soft: 2px;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family: var(--sans);
+  background: var(--beige);
+  color: var(--brun);
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img, svg{display:block; max-width:100%;}
+a{color:inherit; text-decoration:none;}
+.grain-def{position:absolute; width:0; height:0;}
+
+/* ===================== TYPE ===================== */
+.eyebrow{
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--terracotta);
+  margin-bottom: 18px;
+}
+.h-editorial{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  color: var(--brun);
+}
+.h-editorial em{
+  font-style: italic;
+  font-weight: 300;
+  color: var(--terracotta);
+}
+.body-lg{
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-weight: 300;
+  max-width: 46ch;
+  color: var(--brun);
+  opacity: 0.85;
+  margin: 26px 0 34px;
+}
+.signature{
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--camel);
+}
+
+/* ===================== SECTION INDEX / DIVIDER ===================== */
+.section-index{
+  display:inline-block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--terracotta);
+  border-top: 1px solid currentColor;
+  padding-top: 8px;
+  margin-bottom: 28px;
+}
+.section-index.dark{ color: var(--lin); }
+
+/* ===================== BUTTONS ===================== */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 15px 30px;
+  border-radius: var(--radius-soft);
+  transition: all .35s cubic-bezier(.4,0,.2,1);
+  white-space: nowrap;
+}
+.btn-solid{ background: var(--brun); color: var(--ivoire); }
+.btn-solid:hover{ background: var(--noir); transform: translateY(-2px); }
+.btn-solid:focus-visible{ outline:2px solid var(--terracotta); outline-offset:3px; }
+.btn-solid.btn-light{ background: var(--ivoire); color: var(--brun); }
+.btn-solid.btn-light:hover{ background: var(--lin); }
+
+.btn-ghost{ background: transparent; color: var(--brun); border: 1px solid var(--brun); }
+.btn-ghost:hover{ background: var(--brun); color: var(--ivoire); }
+
+.btn-line{ background: transparent; color: var(--brun); border-bottom: 1px solid var(--brun); padding: 15px 4px; border-radius:0; }
+.btn-line:hover{ color: var(--terracotta); border-color: var(--terracotta); gap: 14px; }
+
+.full{ width: 100%; }
+.center-btn{ margin: 48px auto 0; display:flex; width: fit-content; }
+
+/* ===================== ARC MARK / LOGO ===================== */
+.arc-mark{ color: var(--brun); }
+.nav-logo{
+  display:flex; align-items:center; gap:10px;
+  font-family: var(--serif);
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  color: var(--brun);
+}
+.nav-logo span{ font-weight: 300; opacity: 0.7; margin-left: 2px;}
+
+/* ===================== NAV ===================== */
+.nav{
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(216,196,168,0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(58,33,24,0.08);
+  transition: padding .3s ease;
+}
+.nav-inner{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 20px var(--pad);
+  display:flex; align-items:center; justify-content:space-between;
+  gap: 24px;
+}
+.nav-links{ display:flex; gap: 34px; font-size: 13px; letter-spacing: 0.03em; }
+.nav-links a{ position:relative; padding-bottom:3px; }
+.nav-links a::after{
+  content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background: var(--terracotta);
+  transition: width .3s ease;
+}
+.nav-links a:hover::after{ width:100%; }
+.nav-cta{ padding: 11px 22px; font-size:12px; }
+.hamburger{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+.hamburger span{ width:22px; height:1.5px; background: var(--brun); transition: all .3s ease; }
+.hamburger.open span:nth-child(1){ transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2){ opacity:0; }
+.hamburger.open span:nth-child(3){ transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-menu{
+  display:flex; flex-direction:column;
+  max-height:0; overflow:hidden;
+  transition: max-height .4s ease;
+  background: var(--beige);
+  border-top: 1px solid rgba(58,33,24,0.08);
+}
+.mobile-menu.open{ max-height: 400px; }
+.mobile-menu a{ padding: 16px var(--pad); border-bottom:1px solid rgba(58,33,24,0.08); font-size:14px; letter-spacing:0.03em; }
+.mobile-menu .btn{ margin: 20px var(--pad) 24px; border-bottom:none; }
+
+/* ===================== HERO ===================== */
+.hero{
+  position: relative;
+  padding: clamp(48px,8vw,96px) var(--pad) 0;
+  overflow: hidden;
+}
+.hero-deco-circle{
+  position:absolute; top: 12%; left: 4%;
+  width: 60px; height:60px; border-radius:50%;
+  border:1px solid var(--terracotta);
+  opacity:.5;
+}
+.hero-deco-blob{ position:absolute; top:-10%; right:-15%; width:50vw; max-width:600px; z-index:0; }
+.hero-grid{
+  max-width: var(--container); margin: 0 auto;
+  display:grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items:center;
+  position:relative; z-index:1;
+}
+.hero-title{ margin-top:4px; }
+.hero-sub{ font-weight:300; font-size:1.05rem; max-width: 40ch; margin: 24px 0 36px; opacity:.85; }
+.hero-ctas{ display:flex; gap:18px; flex-wrap:wrap; }
+.hero-opening{
+  margin-top: 28px;
+  font-size: 12px;
+  letter-spacing: .03em;
+  color: var(--brun);
+  opacity: .65;
+  padding-top: 16px;
+  border-top: 1px solid rgba(58,33,24,0.15);
+  max-width: 42ch;
+}
+.hero-visual{ position:relative; }
+.photo-tall{ aspect-ratio: 4/5.1; }
+.hero-index{ position:absolute; left: -6px; bottom: -34px; }
+.hero-caption{
+  position:absolute; right:0; bottom:-34px;
+  font-size:11px; letter-spacing:.08em; text-transform:uppercase; color: var(--brun); opacity:.6;
+}
+.hero-line{ max-width: var(--container); margin: 80px auto 0; height:1px; background: rgba(58,33,24,0.15);}
+.scroll-cue{ text-align:center; font-size:11px; letter-spacing:.1em; text-transform:uppercase; opacity:.55; padding: 18px 0; }
+.scroll-cue span{ display:block; margin-top:4px; animation: bob 2s infinite ease-in-out; }
+@keyframes bob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(5px);} }
+
+/* ===================== PHOTO PLACEHOLDERS ===================== */
+.photo-frame{ position:relative; overflow:hidden; border-radius: var(--radius-soft); }
+.photo-ph{
+  width:100%; height:100%; position:relative;
+  background:
+    radial-gradient(120% 140% at 20% 15%, rgba(248,244,236,0.5), transparent 55%),
+    linear-gradient(155deg, #6b5238 0%, #4A3527 38%, #2C2620 100%);
+  min-height: 220px;
+}
+.photo-ph::before{
+  content:""; position:absolute; inset:0;
+  filter:url(#grain);
+  opacity:0.5;
+  mix-blend-mode: overlay;
+}
+.photo-ph::after{
+  content: attr(data-caption);
+  position:absolute; left:14px; right:14px; bottom:14px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--lin);
+  opacity: 0.55;
+  line-height:1.4;
+}
+.photo-frame:hover .photo-ph{ transform: scale(1.035); }
+.photo-ph{ transition: transform .7s cubic-bezier(.4,0,.2,1); }
+
+/* ===================== MANIFESTO ===================== */
+.manifesto{ padding: clamp(80px,10vw,140px) var(--pad); max-width: var(--container); margin:0 auto; }
+.manifesto-grid{ display:grid; grid-template-columns: 0.9fr 1.1fr; gap: 70px; align-items:center; }
+.manifesto-imgs{ position:relative; display:grid; grid-template-columns: 1fr; }
+.photo-small{ width:58%; aspect-ratio: 3/4; position:relative; z-index:2; margin-left: 12%; margin-bottom:-14%; box-shadow: 0 20px 40px rgba(17,16,15,0.18);}
+.photo-big{ aspect-ratio: 4/4.6; }
+.manifesto-stats{ display:flex; gap: 44px; margin-bottom: 30px; }
+.stat-num{ display:block; font-family: var(--serif); font-size: 2rem; color: var(--terracotta); }
+.stat-label{ font-size: 11px; letter-spacing:.06em; text-transform:uppercase; opacity:.65; }
+
+/* ===================== STUDIO ===================== */
+.studio{ background: var(--ivoire); padding: clamp(80px,10vw,140px) var(--pad); }
+.section-head{ max-width: var(--container); margin: 0 auto; margin-bottom: 56px; }
+.section-head.center{ text-align:center; display:flex; flex-direction:column; align-items:center; }
+.studio-gallery{
+  max-width: var(--container); margin: 0 auto 80px;
+  display:grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 130px;
+  gap: 14px;
+}
+.g-1{ grid-column: span 3; grid-row: span 3; }
+.g-2{ grid-column: span 3; grid-row: span 2; }
+.g-3{ grid-column: span 3; grid-row: span 2; }
+.g-4{ grid-column: span 2; grid-row: span 2; }
+.g-5{ grid-column: span 2; grid-row: span 2; }
+.g-6{ grid-column: span 2; grid-row: span 2; }
+
+.values{ max-width: var(--container); margin: 0 auto; display:grid; grid-template-columns: repeat(3,1fr); gap: 50px; }
+.value-mark{ color: var(--terracotta); font-size:1.2rem; }
+.value h3{ font-family: var(--serif); font-weight:400; font-size: 1.5rem; margin: 14px 0 10px; }
+.value p{ font-weight:300; opacity:.8; max-width: 34ch; }
+
+.equip-strip{
+  max-width: var(--container); margin: 90px auto 0;
+  padding-top: 56px; border-top: 1px solid rgba(58,33,24,0.14);
+}
+.eyebrow.center{ text-align:center; margin-bottom: 30px; }
+.equip-list{
+  display:grid; grid-template-columns: repeat(5,1fr);
+  gap: 0;
+}
+.equip-item{
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  gap: 6px;
+  padding: 4px 18px;
+  border-left: 1px solid rgba(58,33,24,0.14);
+}
+.equip-item:first-child{ border-left: none; }
+.equip-item span{
+  font-family: var(--serif); font-size: 1.05rem; font-weight: 400; color: var(--brun);
+  line-height: 1.25;
+}
+.equip-item em{
+  font-style: normal; font-size: 11px; letter-spacing:.05em; text-transform:uppercase;
+  color: var(--camel);
+}
+
+/* ===================== PILATES ===================== */
+.pilates{ padding: clamp(80px,10vw,140px) var(--pad); max-width: var(--container); margin:0 auto; }
+.pilates-head{ text-align:center; margin-bottom: 64px; }
+.pilates-head .section-index{ display:block; }
+.pilates-head h2{ margin-top:6px; }
+.benefits{ display:grid; grid-template-columns: repeat(4,1fr); gap: 40px; margin-bottom: 70px; }
+.benefit{ border-top:1px solid rgba(58,33,24,0.18); padding-top: 22px; }
+.benefit-num{ font-family: var(--serif); font-style: italic; color: var(--terracotta); font-size: 14px; }
+.benefit h3{ font-family: var(--serif); font-weight:400; font-size:1.6rem; margin: 10px 0 8px; }
+.benefit p{ font-weight:300; opacity:.8; max-width: 32ch; }
+.photo-wide{ aspect-ratio: 21/9; }
+
+/* ===================== COURS ===================== */
+.cours{ background: var(--noir); color: var(--ivoire); padding: clamp(80px,10vw,140px) var(--pad); }
+.cours .section-index{ color: var(--terracotta); }
+.cours .h-editorial{ color: var(--ivoire); }
+.cours-grid{ max-width: var(--container); margin: 0 auto; display:grid; grid-template-columns: repeat(3,1fr); gap: 34px; }
+.course-card{ display:flex; flex-direction:column; }
+.course-img{ aspect-ratio: 4/5; margin-bottom: 22px; }
+.course-card .eyebrow{ color: var(--camel); }
+.course-card h3{ font-family: var(--serif); font-weight: 400; font-size: 1.8rem; color: var(--ivoire); margin-bottom: 8px; }
+.course-desc{ font-weight:300; color: var(--lin); opacity:.75; margin-bottom: 6px; max-width: 30ch; }
+.course-duration{ font-size:12px; letter-spacing:.06em; text-transform:uppercase; color: var(--camel); margin-bottom: 22px; }
+.course-card .btn-line{ color: var(--ivoire); border-color: var(--ivoire); }
+.course-card .btn-line:hover{ color: var(--terracotta); border-color: var(--terracotta); }
+
+/* ===================== TARIFS ===================== */
+.tarifs{ background: var(--lin); padding: clamp(80px,10vw,140px) var(--pad); }
+.tarifs .section-index{ color: var(--terracotta); }
+.pricing-grid{ max-width: var(--container); margin: 0 auto; display:grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+.price-card{
+  position:relative;
+  background: var(--ivoire);
+  border: 1px solid rgba(58,33,24,0.12);
+  padding: 40px 28px;
+  text-align:center;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.price-card:hover{ transform: translateY(-6px); box-shadow: 0 20px 40px rgba(58,33,24,0.1); }
+.price-card.popular{ background: var(--brun); color: var(--ivoire); }
+.price-badge{
+  position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+  background: var(--terracotta); color: var(--ivoire);
+  font-size: 10px; letter-spacing:.08em; text-transform:uppercase;
+  padding: 6px 14px; border-radius: 20px; white-space:nowrap;
+}
+.price-name{ font-size:12px; letter-spacing:.1em; text-transform:uppercase; opacity:.7; margin-bottom: 14px; }
+.price-amount{ font-family: var(--serif); font-size: 2.2rem; margin-bottom: 12px; }
+.price-detail{ font-size: 13px; font-weight:300; opacity:.7; margin-bottom: 26px; min-height: 34px; }
+.price-card.popular .btn-ghost{ color: var(--ivoire); border-color: var(--ivoire); }
+.price-card.popular .btn-ghost:hover{ background: var(--ivoire); color: var(--brun); }
+
+/* ===================== AVIS ===================== */
+.avis{ padding: clamp(80px,10vw,140px) var(--pad); max-width: var(--container); margin:0 auto; }
+.avis .section-index{ display:block; text-align:center; }
+.testimonials{ display:grid; grid-template-columns: repeat(3,1fr); gap: 40px; }
+.testimonial{ position:relative; padding-top: 20px; }
+.quote-mark{ font-family: var(--serif); font-size: 3.5rem; color: var(--argile); opacity:.6; line-height:0; display:block; margin-bottom: 12px; }
+.testimonial p{ font-family: var(--serif); font-weight:400; font-style:italic; font-size: 1.15rem; line-height:1.5; margin-bottom: 18px; }
+.testimonial cite{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; opacity:.6; font-style:normal; }
+
+/* ===================== SOCIAL ===================== */
+.social{ background: var(--brun); color: var(--ivoire); padding: clamp(80px,10vw,140px) var(--pad); }
+.social .h-editorial{ color: var(--ivoire); }
+.social-handle{ font-family: var(--serif); font-style:italic; color: var(--terracotta); margin-top: 10px; font-size: 1.1rem; }
+.insta-grid{ max-width: var(--container); margin: 0 auto; display:grid; grid-template-columns: repeat(6,1fr); gap: 12px; }
+.sq{ aspect-ratio: 1/1; }
+.social .btn-line{ color: var(--ivoire); border-color: var(--ivoire); }
+.social .btn-line:hover{ color: var(--terracotta); border-color: var(--terracotta); }
+
+/* ===================== LOCALISATION ===================== */
+.localisation{ padding: clamp(80px,10vw,140px) var(--pad); max-width: var(--container); margin: 0 auto; }
+.loc-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items:center; }
+.loc-name{ font-family: var(--serif); font-size: 1.4rem; margin-top: 20px; }
+.loc-city{ opacity:.75; margin-bottom: 6px; }
+.loc-hours{ font-size: 13px; letter-spacing:.04em; color: var(--sauge); margin-bottom: 30px; }
+.loc-map{ border-radius: var(--radius-soft); overflow:hidden; border: 1px solid rgba(58,33,24,0.12); }
+
+/* ===================== FINAL CTA ===================== */
+.final-cta{
+  position:relative; overflow:hidden;
+  background: var(--brun); color: var(--ivoire);
+  padding: clamp(100px,14vw,180px) var(--pad);
+  text-align:center;
+}
+.cta-circle{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width: 120%; max-width:900px; z-index:0; }
+.cta-content{ position:relative; z-index:1; max-width: 640px; margin:0 auto; }
+.cta-title{ color: var(--ivoire); }
+.cta-title em{ color: var(--terracotta); }
+.cta-text{ font-weight:300; margin: 24px 0 38px; opacity:.85; }
+
+/* ===================== FOOTER ===================== */
+.footer{ background: var(--noir); color: var(--lin); padding: 60px var(--pad) 30px; }
+.footer-top{
+  max-width: var(--container); margin:0 auto;
+  display:flex; flex-wrap:wrap; justify-content:space-between; gap: 40px;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(244,235,221,0.12);
+}
+.footer-logo{ color: var(--ivoire); }
+.footer-links{ display:flex; gap: 28px; font-size: 13px; }
+.footer-links a:hover{ color: var(--terracotta); }
+.footer-info{ display:flex; gap: 24px; font-size: 13px; opacity:.75; }
+.footer-info a:hover{ color: var(--terracotta); }
+.footer-bottom{
+  max-width: var(--container); margin:0 auto;
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  padding-top: 26px; font-size: 12px; opacity:.6;
+}
+.footer-sign{ font-family: var(--serif); font-style:italic; }
+
+/* ===================== REVEAL ANIMATION ===================== */
+.reveal{ opacity:0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.4,0,.2,1), transform .8s cubic-bezier(.4,0,.2,1); }
+.reveal.is-visible{ opacity:1; transform: translateY(0); }
+.delay-1.is-visible{ transition-delay: .12s; }
+.delay-2.is-visible{ transition-delay: .24s; }
+
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+  .scroll-cue span{ animation:none; }
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 980px){
+  .nav-links, .nav-cta{ display:none; }
+  .hamburger{ display:flex; }
+  .hero-grid{ grid-template-columns: 1fr; gap: 44px; }
+  .manifesto-grid{ grid-template-columns: 1fr; gap: 50px; }
+  .photo-small{ width: 48%; margin-bottom: -10%; }
+  .studio-gallery{ grid-template-columns: repeat(2,1fr); grid-auto-rows: 200px; }
+  .g-1,.g-2,.g-3,.g-4,.g-5,.g-6{ grid-column: span 1; grid-row: span 1; }
+  .values{ grid-template-columns: 1fr; gap: 36px; }
+  .benefits{ grid-template-columns: 1fr 1fr; gap: 36px; }
+  .equip-list{ grid-template-columns: repeat(2,1fr); gap: 24px 0; }
+  .equip-item{ border-left:none; border-top: 1px solid rgba(58,33,24,0.14); padding-top:16px; }
+  .equip-item:first-child{ border-top:none; }
+  .cours-grid{ grid-template-columns: 1fr; gap: 44px; }
+  .pricing-grid{ grid-template-columns: 1fr 1fr; }
+  .testimonials{ grid-template-columns: 1fr; gap: 36px; }
+  .insta-grid{ grid-template-columns: repeat(3,1fr); }
+  .loc-grid{ grid-template-columns: 1fr; gap: 40px; }
+  .footer-top{ flex-direction:column; gap: 24px; }
+}
+@media (max-width: 560px){
+  .pricing-grid{ grid-template-columns: 1fr; }
+  .insta-grid{ grid-template-columns: repeat(2,1fr); }
+  .hero-ctas{ flex-direction:column; align-items:flex-start; }
+  .hero-ctas .btn{ width:100%; }
+  .benefits{ grid-template-columns: 1fr; }
+  .equip-list{ grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- grain overlay -->
+<svg class="grain-def" width="0" height="0">
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/>
+    <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0"/>
+  </filter>
+</svg>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg class="arc-mark" width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <path d="M2 18C2 9 9 2 18 2" stroke="currentColor" stroke-width="1.3"/>
+        <circle cx="18" cy="2" r="2" fill="currentColor"/>
+      </svg>
+      ONE <span>STUDIO</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#studio">Studio</a>
+      <a href="#pilates">Le Pilates</a>
+      <a href="#cours">Cours</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#tarifs" class="btn btn-line nav-cta">Réserver</a>
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#studio">Studio</a>
+    <a href="#pilates">Le Pilates</a>
+    <a href="#cours">Cours</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#contact">Contact</a>
+    <a href="#tarifs" class="btn btn-solid">Réserver un cours</a>
+  </div>
+</header>
+
+<!-- ===================== 01 — HERO ===================== -->
+<section class="hero" id="top">
+  <div class="hero-deco-circle"></div>
+  <svg class="hero-deco-blob" viewBox="0 0 600 600" fill="none">
+    <path d="M401 55C466 92 540 158 552 236C564 314 512 404 447 460C382 516 304 538 231 517C158 496 90 432 61 356C32 280 42 192 92 130C142 68 232 32 305 27C378 22 336 18 401 55Z" fill="#C49A80" opacity="0.16"/>
+  </svg>
+
+  <div class="hero-grid">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">Colombes · Pilates Reformer &amp; Nutrition</p>
+      <h1 class="hero-title">Le Pilates,<br><em>autrement.</em></h1>
+      <p class="hero-sub">200 m² pensés pour bouger, respirer et prendre soin de soi — reformer, nutrition et récupération réunis en un seul lieu.</p>
+      <div class="hero-ctas">
+        <a href="#tarifs" class="btn btn-solid">Réserver un cours</a>
+        <a href="#studio" class="btn btn-ghost">Découvrir le studio</a>
+      </div>
+      <p class="hero-opening">Ouverture le 1<sup>er</sup> octobre 2026 — à 2 min de La Garenne-Colombes, Courbevoie &amp; Nanterre</p>
+    </div>
+
+    <div class="hero-visual reveal delay-1">
+      <div class="photo-frame photo-tall">
+        <div class="photo-ph" data-caption="Séance Reformer — lumière naturelle, grain argentique"></div>
+      </div>
+      <span class="section-index hero-index">01</span>
+      <span class="hero-caption">One Studio · Colombes</span>
+    </div>
+  </div>
+
+  <div class="hero-line"></div>
+  <p class="scroll-cue">Faites défiler <span>↓</span></p>
+</section>
+
+<!-- ===================== 02 — MANIFESTO ===================== -->
+<section class="manifesto">
+  <div class="manifesto-grid">
+    <div class="manifesto-imgs reveal">
+      <div class="photo-frame photo-small">
+        <div class="photo-ph" data-caption="Détail — accessoires en lin"></div>
+      </div>
+      <div class="photo-frame photo-big">
+        <div class="photo-ph" data-caption="Silhouette — étirement au sol"></div>
+      </div>
+    </div>
+
+    <div class="manifesto-text reveal delay-1">
+      <span class="section-index">02</span>
+      <h2 class="h-editorial">Le mouvement comme<br>nouveau rituel.</h2>
+      <p class="body-lg">Chez One Studio, le Pilates devient un moment pour soi. Une pratique précise, élégante et accessible, associée à un accompagnement nutritionnel personnalisé, pensée pour renforcer le corps tout en apaisant l'esprit.</p>
+
+      <div class="manifesto-stats">
+        <div><span class="stat-num">200 m²</span><span class="stat-label">Dédiés au bien-être</span></div>
+        <div><span class="stat-num">8</span><span class="stat-label">Reformers</span></div>
+        <div><span class="stat-num">6/7</span><span class="stat-label">Jours d'ouverture</span></div>
+      </div>
+
+      <p class="signature">One Studio · Colombes</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 03 — LE STUDIO ===================== -->
+<section class="studio" id="studio">
+  <div class="section-head reveal">
+    <span class="section-index dark">03</span>
+    <h2 class="h-editorial">Un lieu pensé<br>pour ralentir.</h2>
+  </div>
+
+  <div class="studio-gallery reveal delay-1">
+    <div class="photo-frame g-1"><div class="photo-ph" data-caption="Salle principale — reformers alignés"></div></div>
+    <div class="photo-frame g-2"><div class="photo-ph" data-caption="Détail architectural — arche & miroir"></div></div>
+    <div class="photo-frame g-3"><div class="photo-ph" data-caption="Matières naturelles — bois & lin"></div></div>
+    <div class="photo-frame g-4"><div class="photo-ph" data-caption="Mains sur sangles — précision du geste"></div></div>
+    <div class="photo-frame g-5"><div class="photo-ph" data-caption="Espace bien-être — récupération"></div></div>
+    <div class="photo-frame g-6"><div class="photo-ph" data-caption="Détail lifestyle — bar à nutrition"></div></div>
+  </div>
+
+  <div class="values reveal delay-2">
+    <div class="value">
+      <span class="value-mark">—</span>
+      <h3>Précision</h3>
+      <p>Chaque mouvement est guidé, corrigé et affiné pour un travail juste, jamais approximatif.</p>
+    </div>
+    <div class="value">
+      <span class="value-mark">—</span>
+      <h3>Présence</h3>
+      <p>Un cadre pensé pour se recentrer, loin du bruit, le temps d'une séance entièrement pour soi.</p>
+    </div>
+    <div class="value">
+      <span class="value-mark">—</span>
+      <h3>Progression</h3>
+      <p>Une méthode qui accompagne chaque corps, à son rythme, séance après séance.</p>
+    </div>
+  </div>
+
+  <div class="equip-strip reveal delay-2">
+    <p class="eyebrow center">L'expérience One Studio</p>
+    <div class="equip-list">
+      <div class="equip-item"><span>Pilates Reformer</span><em>8 machines</em></div>
+      <div class="equip-item"><span>Bar à nutrition</span><em>Bilans personnalisés</em></div>
+      <div class="equip-item"><span>Sauna infrarouge</span><em>Récupération</em></div>
+      <div class="equip-item"><span>Espace bien-être</span><em>Détente & soin</em></div>
+      <div class="equip-item"><span>Cours adaptés</span><em>Grossesse & post-partum</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 04 — LE PILATES ===================== -->
+<section class="pilates" id="pilates">
+  <div class="pilates-head reveal">
+    <span class="section-index">04</span>
+    <h2 class="h-editorial">Strong body.<br><em>Soft mind.</em></h2>
+  </div>
+
+  <div class="benefits reveal delay-1">
+    <div class="benefit">
+      <span class="benefit-num">01</span>
+      <h3>Renforcer</h3>
+      <p>Un travail profond et progressif pour renforcer l'ensemble du corps.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-num">02</span>
+      <h3>Aligner</h3>
+      <p>Une attention particulière portée à la posture, au contrôle et à la précision.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-num">03</span>
+      <h3>Respirer</h3>
+      <p>Une pratique qui reconnecte le mouvement, la respiration et les sensations.</p>
+    </div>
+    <div class="benefit">
+      <span class="benefit-num">04</span>
+      <h3>Nourrir</h3>
+      <p>Un bilan nutritionnel personnalisé pour prendre soin du corps dans sa globalité.</p>
+    </div>
+  </div>
+
+  <div class="photo-frame photo-wide reveal delay-2">
+    <div class="photo-ph" data-caption="Reformer en pleine largeur — étude de mouvement"></div>
+  </div>
+</section>
+
+<!-- ===================== 05 — LES COURS ===================== -->
+<section class="cours" id="cours">
+  <div class="section-head center reveal">
+    <span class="section-index">05</span>
+    <h2 class="h-editorial">Trois façons<br>de pratiquer.</h2>
+  </div>
+
+  <div class="cours-grid reveal delay-1">
+    <article class="course-card">
+      <div class="photo-frame course-img"><div class="photo-ph" data-caption="Reformer — cours dynamique"></div></div>
+      <p class="eyebrow">Dynamique</p>
+      <h3>Reformer</h3>
+      <p class="course-desc">Cours dynamique sur reformer, entre renforcement et fluidité.</p>
+      <p class="course-duration">45 min</p>
+      <a href="#contact" class="btn btn-line full">Voir les disponibilités</a>
+    </article>
+
+    <article class="course-card">
+      <div class="photo-frame course-img"><div class="photo-ph" data-caption="Mat Pilates — travail au sol"></div></div>
+      <p class="eyebrow">Fondamentaux</p>
+      <h3>Mat Pilates</h3>
+      <p class="course-desc">Travail au sol, mobilité et renforcement en profondeur.</p>
+      <p class="course-duration">50 min</p>
+      <a href="#contact" class="btn btn-line full">Voir les disponibilités</a>
+    </article>
+
+    <article class="course-card">
+      <div class="photo-frame course-img"><div class="photo-ph" data-caption="Private Session — accompagnement individuel"></div></div>
+      <p class="eyebrow">Sur-mesure</p>
+      <h3>Private Session</h3>
+      <p class="course-desc">Accompagnement personnalisé, adapté à vos objectifs.</p>
+      <p class="course-duration">60 min</p>
+      <a href="#contact" class="btn btn-line full">Voir les disponibilités</a>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== 06 — TARIFS ===================== -->
+<section class="tarifs" id="tarifs">
+  <div class="section-head center reveal">
+    <span class="section-index dark">06</span>
+    <h2 class="h-editorial">Find your<br><em>rhythm.</em></h2>
+  </div>
+
+  <div class="pricing-grid reveal delay-1">
+    <div class="price-card">
+      <p class="price-name">Single Class</p>
+      <p class="price-amount">30 €</p>
+      <p class="price-detail">Une séance, sans engagement.</p>
+      <a href="#contact" class="btn btn-ghost full">Choisir mon forfait</a>
+    </div>
+
+    <div class="price-card popular">
+      <span class="price-badge">Le plus choisi</span>
+      <p class="price-name">5 Classes</p>
+      <p class="price-amount">135 €</p>
+      <p class="price-detail">27 € la séance, valables 2 mois.</p>
+      <a href="#contact" class="btn btn-solid full">Choisir mon forfait</a>
+    </div>
+
+    <div class="price-card">
+      <p class="price-name">10 Classes</p>
+      <p class="price-amount">250 €</p>
+      <p class="price-detail">25 € la séance, valables 4 mois.</p>
+      <a href="#contact" class="btn btn-ghost full">Choisir mon forfait</a>
+    </div>
+
+    <div class="price-card">
+      <p class="price-name">Private</p>
+      <p class="price-amount">Dès 90 €</p>
+      <p class="price-detail">Accompagnement individuel sur-mesure.</p>
+      <a href="#contact" class="btn btn-ghost full">Choisir mon forfait</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 07 — AVIS ===================== -->
+<section class="avis">
+  <div class="section-head center reveal">
+    <span class="section-index">07</span>
+    <h2 class="h-editorial">Ce qu'elles<br>en disent.</h2>
+  </div>
+
+  <div class="testimonials reveal delay-1">
+    <blockquote class="testimonial">
+      <span class="quote-mark">"</span>
+      <p>Une vraie parenthèse dans ma semaine. Le studio est magnifique et les cours sont aussi exigeants que bienveillants.</p>
+      <cite>— Camille</cite>
+    </blockquote>
+    <blockquote class="testimonial">
+      <span class="quote-mark">"</span>
+      <p>Enfin un endroit où le Pilates ressemble autant à une expérience qu'à une pratique sportive.</p>
+      <cite>— Louise</cite>
+    </blockquote>
+    <blockquote class="testimonial">
+      <span class="quote-mark">"</span>
+      <p>Tout est pensé dans les moindres détails. Je ressors de chaque séance plus forte et plus légère.</p>
+      <cite>— Juliette</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ===================== 08 — INSTAGRAM ===================== -->
+<section class="social">
+  <div class="section-head center reveal">
+    <span class="section-index dark">08</span>
+    <h2 class="h-editorial">Follow the<br><em>movement.</em></h2>
+    <p class="social-handle">@onestudio.pilatesreformer</p>
+  </div>
+
+  <div class="insta-grid reveal delay-1">
+    <div class="photo-frame sq"><div class="photo-ph" data-caption="Pilates — cadrage serré"></div></div>
+    <div class="photo-frame sq"><div class="photo-ph" data-caption="Détail studio"></div></div>
+    <div class="photo-frame sq"><div class="photo-ph" data-caption="Silhouette en mouvement"></div></div>
+    <div class="photo-frame sq"><div class="photo-ph" data-caption="Architecture parisienne"></div></div>
+    <div class="photo-frame sq"><div class="photo-ph" data-caption="Matières — lin & bois"></div></div>
+    <div class="photo-frame sq"><div class="photo-ph" data-caption="Lifestyle — après séance"></div></div>
+  </div>
+
+  <a href="https://www.instagram.com/onestudio.pilatesreformer/" target="_blank" rel="noopener" class="btn btn-line center-btn reveal delay-2">Instagram</a>
+</section>
+
+<!-- ===================== 09 — LOCALISATION ===================== -->
+<section class="localisation" id="contact">
+  <div class="loc-grid">
+    <div class="loc-text reveal">
+      <span class="section-index">09</span>
+      <h2 class="h-editorial">Come say<br><em>hello.</em></h2>
+      <p class="loc-name">One Studio</p>
+      <p class="loc-city">Colombes, France — à 2 min de La Garenne-Colombes, Courbevoie &amp; Nanterre</p>
+      <p class="loc-hours">Ouvert du lundi au samedi · Ouverture le 1<sup>er</sup> octobre 2026</p>
+      <a href="#" class="btn btn-solid">Nous trouver</a>
+    </div>
+    <div class="loc-map reveal delay-1">
+      <svg viewBox="0 0 400 400" class="map-svg">
+        <rect width="400" height="400" fill="#EDE4D2"/>
+        <g stroke="#4A3527" stroke-opacity="0.25" stroke-width="1">
+          <line x1="0" y1="80" x2="400" y2="60"/>
+          <line x1="0" y1="180" x2="400" y2="200"/>
+          <line x1="0" y1="300" x2="400" y2="320"/>
+          <line x1="90" y1="0" x2="70" y2="400"/>
+          <line x1="230" y1="0" x2="260" y2="400"/>
+        </g>
+        <circle cx="205" cy="195" r="7" fill="#B08D57"/>
+        <circle cx="205" cy="195" r="16" fill="none" stroke="#B08D57" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 10 — CTA FINAL ===================== -->
+<section class="final-cta">
+  <svg class="cta-circle" viewBox="0 0 500 500" fill="none">
+    <circle cx="250" cy="250" r="200" stroke="#E4DCCA" stroke-opacity="0.25" stroke-width="1"/>
+    <circle cx="250" cy="250" r="150" stroke="#E4DCCA" stroke-opacity="0.35" stroke-width="1"/>
+  </svg>
+  <div class="cta-content reveal">
+    <h2 class="h-editorial cta-title">Your body<br><em>will thank you.</em></h2>
+    <p class="cta-text">Réservez votre première séance chez One Studio.</p>
+    <a href="#tarifs" class="btn btn-solid btn-light">Réserver un cours</a>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer-top">
+    <a href="#top" class="nav-logo footer-logo">
+      <svg class="arc-mark" width="20" height="20" viewBox="0 0 22 22" fill="none">
+        <path d="M2 18C2 9 9 2 18 2" stroke="currentColor" stroke-width="1.3"/>
+        <circle cx="18" cy="2" r="2" fill="currentColor"/>
+      </svg>
+      ONE <span>STUDIO</span>
+    </a>
+    <nav class="footer-links">
+      <a href="#studio">Studio</a>
+      <a href="#cours">Cours</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="footer-info">
+      <a href="https://www.instagram.com/onestudio.pilatesreformer/" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:bonjour@onestudio-pilates.fr">bonjour@onestudio-pilates.fr</a>
+      <span>Colombes</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-legal">Mentions légales · Politique de confidentialité</p>
+    <p class="footer-sign">Move with intention.</p>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', isOpen);
+});
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// Sticky nav subtle shrink
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.style.boxShadow = window.scrollY > 40 ? '0 8px 24px rgba(17,16,15,0.06)' : 'none';
+}, { passive: true });
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+revealEls.forEach(el => observer.observe(el));
+
+</script>
+</body>
+</html>
